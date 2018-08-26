@@ -1,0 +1,37 @@
+{
+  "name": "kafkajs-snappy",
+  "version": "1.0.0",
+  "description": "Snappy codec for KafkaJS",
+  "main": "src/index.js",
+  "scripts": {
+    "test:local": "NODE_ENV=test ./node_modules/.bin/jest src/ --forceExit --detectOpenHandles",
+    "test:local:watch": "yarn test:local --watch",
+    "test": "./scripts/testWithKafka.sh \"yarn test:local --ci --maxWorkers=4 --no-watchman\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tulios/kafkajs-snappy.git"
+  },
+  "keywords": [
+    "kafka",
+    "kafkajs",
+    "snappy",
+    "codec"
+  ],
+  "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tulios/kafkajs-snappy/issues"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/tulios/kafkajs-snappy#readme",
+  "dependencies": {
+    "snappy": ">= 6.0.4 < 7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^23.5.0",
+    "kafkajs": "^1.3.1"
+  }
+}
