@@ -17,4 +17,5 @@ install:
   - yarn install
 
 script:
+  - docker-compose pull
   - yarn test
