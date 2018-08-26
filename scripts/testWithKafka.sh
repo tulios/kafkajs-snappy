@@ -8,7 +8,7 @@ export HOST_IP=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.
 find_container_id() {
   echo $(docker ps \
     --filter "status=running" \
-    --filter "label=com.docker.compose.project=kafkajs-snappy" \
+    --filter "label=project-name=kafkajs-snappy" \
     --filter "label=com.docker.compose.service=kafka" \
     --no-trunc \
     -q)
@@ -24,6 +24,8 @@ if [ -z ${DO_NOT_STOP} ]; then
 fi
 
 NO_LOGS=1 $PWD/scripts/dockerComposeUp.sh
+
+sleep 1
 containerId="$(find_container_id)"
 
 docker exec \
