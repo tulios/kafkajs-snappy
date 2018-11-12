@@ -1,6 +1,6 @@
 {
   "name": "kafkajs-snappy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Snappy codec for KafkaJS",
   "main": "src/index.js",
   "scripts": {
