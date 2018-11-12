@@ -1,8 +1,4 @@
-const { promisify } = require('util')
-const snappy = require('snappy')
-
-const snappyCompress = promisify(snappy.compress)
-const snappyDecompress = promisify(snappy.uncompress)
+const snappy = require('snappyjs')
 
 const XERIAL_HEADER = Buffer.from([130, 83, 78, 65, 80, 80, 89, 0])
 const SIZE_BYTES = 4
@@ -12,13 +8,13 @@ const isFrameFormat = buffer => buffer.slice(0, 8).equals(XERIAL_HEADER)
 
 module.exports = () => ({
   async compress(encoder) {
-    return snappyCompress(encoder.buffer)
+    return snappy.compress(encoder.buffer)
   },
 
-  // Based on ttps://github.com/eapache/go-xerial-snappy/blob/master/snappy.go#L110
+  // Based on https://github.com/eapache/go-xerial-snappy/blob/master/snappy.go#L110
   async decompress(buffer) {
     if (!isFrameFormat(buffer)) {
-      return snappyDecompress(buffer)
+      return snappy.uncompress(buffer)
     }
 
     const encoded = []
@@ -33,7 +29,7 @@ module.exports = () => ({
     }
 
     const decodedBuffers = await Promise.all(
-      encoded.map(async encodedBuffer => snappyDecompress(encodedBuffer))
+      encoded.map(async encodedBuffer => snappy.uncompress(encodedBuffer))
     )
 
     return decodedBuffers.reduce(
