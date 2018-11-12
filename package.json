@@ -15,7 +15,7 @@
   "keywords": [
     "kafka",
     "kafkajs",
-    "snappy",
+    "snappyjs",
     "codec"
   ],
   "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/tulios/kafkajs-snappy#readme",
   "dependencies": {
-    "snappy": ">= 6.0.4 < 7.0.0"
+    "snappyjs": "^0.6.0"
   },
   "devDependencies": {
     "jest": "^23.5.0",
