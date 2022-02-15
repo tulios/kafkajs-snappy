@@ -3,10 +3,12 @@
   "version": "1.1.0",
   "description": "Snappy codec for KafkaJS",
   "main": "src/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test:local": "NODE_ENV=test ./node_modules/.bin/jest src/ --forceExit --detectOpenHandles",
     "test:local:watch": "yarn test:local --watch",
-    "test": "./scripts/testWithKafka.sh \"yarn test:local --ci --maxWorkers=4 --no-watchman\""
+    "test": "./scripts/testWithKafka.sh \"yarn test:local --ci --maxWorkers=4 --no-watchman\"",
+    "test:types": "tsc -p types/"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,11 @@
     "snappyjs": "^0.6.0"
   },
   "devDependencies": {
+    "@types/kafkajs": "^1.9.0",
+    "@types/node": "^12.0.8",
+    "@typescript-eslint/typescript-estree": "^1.10.2",
     "jest": "^23.5.0",
-    "kafkajs": "^1.4.4"
+    "kafkajs": "^1.4.4",
+    "typescript": "^3.8.3"
   }
 }
